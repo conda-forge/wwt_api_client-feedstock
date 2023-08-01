@@ -1,5 +1,5 @@
 {% set name = "wwt_api_client" %}
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/wwt_api_client-{{ version }}.tar.gz
-  sha256: 51c9b91f2b097ddc261388ff60a8e88de9779a5e3ecd9e052626ed7c46129306
+  sha256: 0e9f798e1f46515f4fa403faf851d6047af9cb46a680c06c5bff021bafd05132
 
 build:
   noarch: python
@@ -21,6 +21,8 @@ requirements:
   run:
     - python >=3.8
     - dataclasses-json >=0.5
+    - html-sanitizer >=2.2
+    - license-expression >=21.6
     - openidc_client >=0.6
     - requests >=2.10
     - wwt_data_formats >=0.16
