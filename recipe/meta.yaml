@@ -11,13 +11,14 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
 
 requirements:
   host:
     - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - python >={{ python_min }}
     - dataclasses-json >=0.5
@@ -38,7 +39,7 @@ test:
 
 about:
   home: https://github.com/WorldWideTelescope/wwt_api_client
-  summary: An API client for the AAS WorldWide Telescope web services
+  summary: An API client for the WorldWide Telescope web services
   license: MIT
   license_file: LICENSE
 
