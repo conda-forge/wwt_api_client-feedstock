@@ -6,20 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/wwt_api_client-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/wwt_api_client-{{ version }}.tar.gz
   sha256: 7a3ce7fcd73cd8480902dedfd554ab238fda77636128e28485c75d8e746da680
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - dataclasses-json >=0.5
     - html-sanitizer >=2.2
     - license-expression >=21.6
@@ -34,10 +35,11 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/WorldWideTelescope/wwt_api_client
-  summary: An API client for the AAS WorldWide Telescope web services
+  summary: An API client for the WorldWide Telescope web services
   license: MIT
   license_file: LICENSE
 
